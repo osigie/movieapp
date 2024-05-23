@@ -5,19 +5,16 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllers();
 
 // Configure Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Register the HTTP client for the MovieService
 builder.Services.AddHttpClient<MovieService>();
 
 
 
-// Add services to the container.
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -27,7 +24,6 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 
 
 
-// Register the DbContext with an in-memory database
 builder.Services.AddDbContext<MovieContext>(options =>
     options.UseInMemoryDatabase("OmdbMovies"));
 
@@ -44,7 +40,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

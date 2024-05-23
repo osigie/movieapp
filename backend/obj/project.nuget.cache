@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e7J9WHViiIc=",
+  "dgSpecHash": "W18Se4jKQn4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\SD-0031\\source\\repos\\movie_app_api\\movie_app_api\\movie_app_api.csproj",
+  "projectFilePath": "C:\\Users\\SD-0031\\Documents\\GitHub\\movieapp\\backend\\movie_app_api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SD-0031\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\SD-0031\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

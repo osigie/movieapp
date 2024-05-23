@@ -28,12 +28,10 @@ namespace movie_app_api.Services
         var content = await response.Content.ReadAsStringAsync();
 
 
-            // Deserialize the response into a dynamic object first to check the Response property
             var tempResult = JsonConvert.DeserializeObject<dynamic>(content);
 
             if (tempResult?.Response == "False")
             {
-                // Handle the case where the movie is not found or other errors
                 return null;
             }
 
