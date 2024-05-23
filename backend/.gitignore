@@ -1,3 +1,8 @@
+
+bin/
+obj/
+packages/
+
 # Visual Studio Code
 .vscode/
 
