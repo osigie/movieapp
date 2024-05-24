@@ -21,7 +21,7 @@ namespace movie_app_api.Services
         _context = context;
     }
 
-    public async Task<Movie> GetMovieByTitleAsync(string title)
+    public async Task<Movie?> GetMovieByTitleAsync(string title)
     {
         var response = await _httpClient.GetAsync($"http://www.omdbapi.com/?t={title}&apikey=be4316de");
         response.EnsureSuccessStatusCode();
@@ -47,6 +47,10 @@ namespace movie_app_api.Services
             var movie = JsonConvert.DeserializeObject<Movie>(content);
 
           
+  if (movie == null) {
+        return null;
+ }
+ movie.Ratings ??= [];
 
             var newMovie = new Movie(movie);
             _context.Movie.Add(newMovie);
@@ -58,11 +62,11 @@ namespace movie_app_api.Services
             }
             await _context.SaveChangesAsync();
 
-            return movie;
+            return newMovie;
 
         }
 
-        public async Task<Movie> GetMovieById(int id)
+        public async Task<Movie?> GetMovieById(int id)
         {
             var movie = await _context.Movie
                 .Include(m => m.Ratings)

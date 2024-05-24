@@ -4,7 +4,7 @@
     {
 
         public int Id { get; set; }
-        public string Query { get; set; }
+        public required string Query { get; set; }
         public DateTime Timestamp { get; set; }
     }
 }

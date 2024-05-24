@@ -65,34 +65,34 @@ namespace movie_app_api.Models
 
 
 
-        public Movie(Movie other)
+        public Movie(Movie movie)
         {
-            Title = other.Title;
-            Year = other.Year;
-            Rated = other.Rated;
-            Released = other.Released;
-            Runtime = other.Runtime;
-            Genre = other.Genre;
-            Director = other.Director;
-            Writer = other.Writer;
-            Actors = other.Actors;
-            Plot = other.Plot;
-            Language = other.Language;
-            Country = other.Country;
-            Awards = other.Awards;
-            Poster = other.Poster;
-            Ratings = other.Ratings != null ? new List<Rating>(other.Ratings) : null;
-            Metascore = other.Metascore;
-            ImdbRating = other.ImdbRating;
-            ImdbVotes = other.ImdbVotes;
-            ImdbID = other.ImdbID;
-            Type = other.Type;
-            DVD = other.DVD;
-            BoxOffice = other.BoxOffice;
-            Production = other.Production;
-            Website = other.Website;
-            Response = other.Response;
-            Timestamp = other.Timestamp;
+            Title = movie.Title;
+            Year = movie.Year;
+            Rated = movie.Rated;
+            Released = movie.Released;
+            Runtime = movie.Runtime;
+            Genre = movie.Genre;
+            Director = movie.Director;
+            Writer = movie.Writer;
+            Actors = movie.Actors;
+            Plot = movie.Plot;
+            Language = movie.Language;
+            Country = movie.Country;
+            Awards = movie.Awards;
+            Poster = movie.Poster;
+            Ratings = movie.Ratings != null ? new List<Rating>(movie.Ratings) : null;
+            Metascore = movie.Metascore;
+            ImdbRating = movie.ImdbRating;
+            ImdbVotes = movie.ImdbVotes;
+            ImdbID = movie.ImdbID;
+            Type = movie.Type;
+            DVD = movie.DVD;
+            BoxOffice = movie.BoxOffice;
+            Production = movie.Production;
+            Website = movie.Website;
+            Response = movie.Response;
+            Timestamp = movie.Timestamp;
         }
 
         public Movie() { }

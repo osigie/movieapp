@@ -6,9 +6,9 @@ namespace movie_app_api.Models
     {
 
         public int Id { get; set; }
-        public string Source { get; set; }
+        public string? Source { get; set; }
 
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         public int MovieId { get; set; }
 
