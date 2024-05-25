@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MEABh5LEuqJZXeq3coNXfXKDfpEO46Rd0ycrvF6ndHEYiQJWLnFi4EQ6z3a8RQP4UgLgG+aoSyCPq0J8vHqe0w==",
+  "dgSpecHash": "dALdw4lNp+Y=",
   "success": true,
   "projectFilePath": "/Users/user/Desktop/dev/movieapp/backend/tests/Movie.Api.Tests/Movie.Api.Tests.csproj",
   "expectedPackageFiles": [
