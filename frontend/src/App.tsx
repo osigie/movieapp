@@ -1,11 +1,18 @@
-import { AppContainer } from "./components/app-container"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AppContainer } from "./components/app-container";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const queryClient = new QueryClient();
   return (
     <>
-      <AppContainer/>
+      <QueryClientProvider client={queryClient}>
+        <AppContainer />
+        <ToastContainer />
+      </QueryClientProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

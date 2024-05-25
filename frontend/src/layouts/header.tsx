@@ -1,65 +1,65 @@
-import { useEffect, useRef, useState } from 'react'
-import { IoIosSearch } from 'react-icons/io'
-import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { useEffect, useRef, useState } from "react";
+import { IoIosSearch } from "react-icons/io";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 
-import { Container } from '../components/container'
-import { SearchResult } from '../components/search-result'
-
-
-
-
+import { Container } from "../components/container";
+import { SearchResult } from "../components/search-result";
 
 export const Header = () => {
-  const location = useLocation()
-  const [params, ] = useSearchParams()
-  const navigate = useNavigate()
+  const location = useLocation();
+  const [params] = useSearchParams();
+  const navigate = useNavigate();
 
-  const [_, setPathname] = useState('')
-  const pathnameRef = useRef('')
-  const defaultKeyword = useRef('')
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setPathname] = useState("");
+  const pathnameRef = useRef("");
+  const defaultKeyword = useRef("");
 
-  const [keyword, setKeyword] = useState('')
-  const [isSearchFocus, setSearchFocus] = useState(false)
-  const searchRef = useRef<HTMLInputElement>(null)
+  const [keyword, setKeyword] = useState("");
+  const [isSearchFocus, setSearchFocus] = useState(false);
+  const searchRef = useRef<HTMLInputElement>(null);
 
   const goToSearchPage = () => {
     if (keyword) {
-      defaultKeyword.current = keyword
-      navigate(`/search?q=${keyword}`)
-      setSearchFocus(false)
-      searchRef.current?.blur()
+      defaultKeyword.current = keyword;
+      navigate(`/search?q=${keyword}`);
+      setSearchFocus(false);
+      searchRef.current?.blur();
     }
-  }
+  };
 
   const initKeyword = () => {
-    if (pathnameRef.current === '/search') {
-      setKeyword(defaultKeyword.current)
+    if (pathnameRef.current === "/search") {
+      setKeyword(defaultKeyword.current);
     } else {
-      setKeyword('')
+      setKeyword("");
     }
-  }
+  };
 
   const onWindowClick = () => {
-    setSearchFocus(false)
-    initKeyword()
-  }
-
-  
+    setSearchFocus(false);
+    initKeyword();
+  };
 
   useEffect(() => {
-    setPathname(location.pathname)
-    pathnameRef.current = location.pathname
-    defaultKeyword.current = params.get('q') || ''
-    initKeyword()
-  }, [location.pathname])
+    setPathname(location.pathname);
+    pathnameRef.current = location.pathname;
+    defaultKeyword.current = params.get("q") || "";
+    initKeyword();
+  }, [location.pathname]);
 
   useEffect(() => {
-    window.addEventListener('click', onWindowClick)
+    window.addEventListener("click", onWindowClick);
 
     return () => {
-      window.removeEventListener('click', onWindowClick)
-    }
-  }, [])
+      window.removeEventListener("click", onWindowClick);
+    };
+  }, []);
 
   return (
     <div className="bg-header sticky top-0 z-[99]">
@@ -68,9 +68,8 @@ export const Header = () => {
         <div className="flex items-center gap-6">
           {/* brand */}
           <h1 className="text-2xl font-semibold">
-            <Link to={'/'}>Movies</Link>
+            <Link to={"/"}>Movies</Link>
           </h1>
-        
         </div>
 
         {/* search */}
@@ -88,10 +87,10 @@ export const Header = () => {
         >
           <input
             onClick={(e) => {
-              e.stopPropagation()
-              setSearchFocus(true)
+              e.stopPropagation();
+              setSearchFocus(true);
             }}
-            onKeyDown={(e) => (e.key === 'Enter' ? goToSearchPage() : '')}
+            onKeyDown={(e) => (e.key === "Enter" ? goToSearchPage() : "")}
             onInput={(e) => setKeyword(e.currentTarget.value)}
             value={keyword}
             type="text"
@@ -99,9 +98,18 @@ export const Header = () => {
             placeholder="search..."
           />
           <IoIosSearch size={18}></IoIosSearch>
-        
+          {isSearchFocus ? (
+            <SearchResult
+              goToSearchPage={(query) => {
+                defaultKeyword.current = query;
+                navigate(`/search?q=${query}`);
+                setSearchFocus(false);
+                searchRef.current?.blur();
+              }}
+            ></SearchResult>
+          ) : null}
         </div>
       </Container>
     </div>
-  )
-}
+  );
+};

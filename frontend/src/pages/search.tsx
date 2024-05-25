@@ -1,78 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { search } from "../api/api";
+import { useGetSearchMovie } from "../api/api";
 import { Card } from "../components/card";
 import { Section } from "../components/section";
-import { Film } from "../interfaces";
-import { MediaType } from "../types";
-import { tmdbImageSrc } from "../utils";
+import { CardLoader } from "../components/card-loader";
+import { toast } from "react-toastify";
 
-interface Props {
-  type: MediaType | "search" | "list";
-}
-
-export const Search = (props: Props) => {
-  let title = "";
-  let request: (page: number) => Promise<{
-    totalPages: number;
-    films: Film[];
-  }>;
-
-  const [films, setFilms] = useState<Film[]>([]);
-  const [params, _] = useSearchParams();
-  const page = useRef(1);
-  const totalPage = useRef(2);
-  const loadingRef = useRef(false);
-  const [onLoading, setOnLoading] = useState(false);
-  const location = useLocation();
+export const Search = () => {
+  const [params] = useSearchParams();
+  const { data, isLoading, isError } = useGetSearchMovie(params.get("q") as string);
   const navigate = useNavigate();
 
-  switch (props.type) {
-    case "search":
-      title = `Search results for <i>${params.get("q")}</i>`;
-      request = (page: number) => search(params.get("q") || "", page);
-      break;
-    default:
-      break;
+  if (isError) {
+    toast("Error fetching movie");
+    return
   }
-
-  const fetch = async () => {
-    loadingRef.current = true;
-    setOnLoading(true);
-
-    const { films, totalPages } = await request(page.current);
-
-    setOnLoading(false);
-    loadingRef.current = false;
-
-    totalPage.current = totalPages;
-    setFilms((arrs) => [...arrs, ...films]);
-  };
-
-  const onWindowScroll = () => {
-    if (loadingRef.current) return;
-
-    if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
-      if (totalPage.current > page.current) {
-        page.current++;
-        fetch();
-      }
-    }
-  };
-
-  useEffect(() => {
-    setFilms([]);
-    fetch();
-  }, [location]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", onWindowScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onWindowScroll);
-    };
-  }, []);
 
   return (
     <>
@@ -84,21 +26,21 @@ export const Search = (props: Props) => {
       {/* PAGE TITLE */}
       <Section
         className="-mt-[90px] flex items-center relative z-10"
-        title={title}
+        title={params.get("q") || ""}
       ></Section>
       {/* Films */}
       <Section>
-        <div className="grid lg:grid-cols-5 sm:grid-cols-4 mobile:grid-cols-3 relative z-[11]">
-          {films.map((film, i) => (
-            <div key={i}>
-              <Card
-                onClick={() => navigate(`/detail/${film.id}`)}
-                imageSrc={tmdbImageSrc(film.posterPath)}
-                title={film.title}
-                key={i}
-              ></Card>
-            </div>
-          ))}
+        <div className="">
+          {isLoading && !data ? (
+            <CardLoader />
+          ) : (
+            <Card
+              onClick={() => navigate(`/detail/${data?.id}`)}
+              imageSrc={data?.poster}
+              title={data?.title}
+              className="cursor-pointer"
+            ></Card>
+          )}
         </div>
       </Section>
     </>

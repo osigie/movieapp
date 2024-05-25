@@ -1,41 +1,45 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getInTheaters } from "../api/api";
+import { useGetSearchMoviesHistory } from "../api/api";
 import { Card } from "../components/card";
 import { Section } from "../components/section";
-import { Film } from "../interfaces";
-import { tmdbImageSrc } from "../utils";
+import { MovieDataT } from "../types";
+import { CardLoader } from "../components/card-loader";
+import { toast } from "react-toastify";
 
 export const Home = () => {
   const navigate = useNavigate();
 
-  const [inTheaters, setInTheaters] = useState<Film[]>([]);
+  const { data, isLoading, isError } = useGetSearchMoviesHistory();
 
-  const goToDetailPage = (film: Film) => {
-    navigate(`detail/${film.id}`);
-  };
+  if (data?.value?.length === 0) {
+    return <div>no videos yet</div>;
+  }
 
-  const fetchInTheaters = async () => {
-    setInTheaters(await getInTheaters());
-  };
-
-  useEffect(() => {
-    fetchInTheaters();
-  }, []);
+  if (isError) {
+    toast("Error fetching movies");
+    return
+  }
 
   return (
     <>
       {/* in theaters */}
-      <Section title="Your Movie Search" hidden={inTheaters.length === 0}>
-        {inTheaters.map((film, i) => (
-          <Card
-            onClick={() => goToDetailPage(film)}
-            title={film.title}
-            imageSrc={tmdbImageSrc(film.posterPath)}
-            key={i}
-          ></Card>
-        ))}
+      <Section title="Your Movie Search">
+        <div className="flex flex-wrap gap-2 justify-center">
+          {isLoading && !data
+            ? Array.of(1, 2, 3, 4).map((i) => {
+                return <CardLoader key={i} />;
+              })
+            : data?.value?.map((film: MovieDataT) => (
+                <Card
+                  onClick={() => navigate(`detail/${film?.id}`)}
+                  title={film?.title}
+                  imageSrc={film?.poster}
+                  key={film?.id}
+                  className="cursor-pointer"
+                ></Card>
+              ))}
+        </div>
       </Section>
     </>
   );
