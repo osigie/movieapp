@@ -22,11 +22,11 @@ export const Detail = () => {
 
   if (isError) {
     toast("Error fetching movie");
-    return
+    return;
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className="max-w-4xl mx-auto p-4 animate-dropleft">
       <div className="">
         <div className="flex  gap-2">
           <Card title={data?.title} imageSrc={data?.poster}></Card>

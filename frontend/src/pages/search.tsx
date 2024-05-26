@@ -31,7 +31,7 @@ export const Search = () => {
         title={`Search results for ${params.get("q")}`}
       ></Section>
       {/* Films */}
-      <Section>
+      <Section className="animate-dropleft">
         <div className="">
           {isLoading && !data ? (
             <CardLoader />
