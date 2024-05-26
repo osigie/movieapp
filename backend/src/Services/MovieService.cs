@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using movie_app_api.Data;
 using movie_app_api.Models;
+using movie_app_api.Models.DTO;
 using Newtonsoft.Json;
 
 namespace movie_app_api.Services
@@ -91,13 +92,33 @@ namespace movie_app_api.Services
         }
 
 
-        public async Task<ActionResult<IEnumerable<Movie>>> GetLastFiveMovies()
+        public async Task<PaginatedResult<Movie>> GetMovies(int pageNumber, int pageSize)
         {
-            return await _context.Movie
-                .Include( m => m.Ratings)
-            .OrderByDescending(s => s.Timestamp)
-            .Take(5)
-            .ToListAsync(); ;
+            // return await _context.Movie
+            //     .Include( m => m.Ratings)
+            // .OrderByDescending(s => s.Timestamp)
+            // .Take(5)
+            // .ToListAsync(); ;
+            
+            
+            var totalCount = await _context.Movie.CountAsync();
+
+            var movies = await _context.Movie
+                .Include(m => m.Ratings)
+                .OrderByDescending(s => s.Timestamp)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var result = new PaginatedResult<Movie>
+            {
+                Data = movies,
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
+
+            return result;
 
         }
     }

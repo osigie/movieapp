@@ -1,10 +1,11 @@
+using movie_app_api.Controllers;
+
 namespace Movie.Api.Tests;
 
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using movie_app_api.Models;
 using movie_app_api.Services;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 using FluentAssertions;
@@ -108,15 +109,14 @@ public class MoviesControllerTests
     public async Task GetSearchMovies_ReturnsOk_WithRecentMovies()
     {
         // Arrange
-        var recentMovies = new List<Movie>
-        {
-            new Movie { Id = 1, Title = "Inception" }
-        };
-        _movieServiceMock.Setup(service => service.GetLastFiveMovies())
-            .ReturnsAsync(new ActionResult<IEnumerable<Movie>>(recentMovies));
+        
+        var movieTitle = "Inception";
+        var movie = new Movie { Id = 1, Title = movieTitle };
+        _movieServiceMock.Setup(service => service.GetMovieByTitleAsync(movieTitle))
+            .ReturnsAsync(movie);
 
         // Act
-        var result = await _controller.GetSearchMovies();
+        var result = await _controller.GetSearchMovies(1,1);
 
         // Assert
         var actionResult = result.Result as OkObjectResult;

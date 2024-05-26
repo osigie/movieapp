@@ -9,6 +9,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6071e755-6306-4515-8af0-f7fd09a30f23" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Models/DTO/PaginatedResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.backend.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Folder.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Folder.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/MovieController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/MoviesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/IMovieService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/IMovieService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/MovieService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/MovieService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Movie.Api.Tests/MovieControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Movie.Api.Tests/MovieControllerTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Movie.Api.Tests/bin/Debug/net8.0/Movie.Api.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Movie.Api.Tests/bin/Debug/net8.0/Movie.Api.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Movie.Api.Tests/bin/Debug/net8.0/Movie.Api.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Movie.Api.Tests/bin/Debug/net8.0/Movie.Api.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Movie.Api.Tests/bin/Debug/net8.0/movie_app_api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Movie.Api.Tests/bin/Debug/net8.0/movie_app_api.dll" afterDir="false" />
@@ -25,8 +32,7 @@
       <change beforePath="$PROJECT_DIR$/tests/Movie.Api.Tests/obj/Movie.Api.Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Movie.Api.Tests/obj/Movie.Api.Tests.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Movie.Api.Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Movie.Api.Tests/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Movie.Api.Tests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Movie.Api.Tests/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Movie.Api.Tests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Movie.Api.Tests/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../movieapp.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../movieapp.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Movie.Api.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Movie.Api.Tests/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +136,7 @@
       <workItem from="1716625354555" duration="135000" />
       <workItem from="1716625494426" duration="4829000" />
       <workItem from="1716631938720" duration="1947000" />
+      <workItem from="1716721469988" duration="2902000" />
     </task>
     <servers />
   </component>
