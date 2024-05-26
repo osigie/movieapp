@@ -12,34 +12,44 @@ export const Home = () => {
 
   const { data, isLoading, isError } = useGetSearchMoviesHistory();
 
-  if (data?.value?.length === 0) {
-    return <div>no videos yet</div>;
-  }
-
   if (isError) {
     toast("Error fetching movies");
-    return
+    return;
   }
 
   return (
     <>
-      {/* in theaters */}
       <Section title="Your Movie Search">
-        <div className="flex flex-wrap gap-2 justify-center">
-          {isLoading && !data
-            ? Array.of(1, 2, 3, 4).map((i) => {
-                return <CardLoader key={i} />;
-              })
-            : data?.value?.map((film: MovieDataT) => (
-                <Card
-                  onClick={() => navigate(`detail/${film?.id}`)}
-                  title={film?.title}
-                  imageSrc={film?.poster}
-                  key={film?.id}
-                  className="cursor-pointer"
-                ></Card>
-              ))}
-        </div>
+        {isLoading && !data ? (
+          <div className="flex flex-wrap gap-2">
+            {Array.of(1, 2, 3, 4).map((i) => {
+              return <CardLoader key={i} />;
+            })}
+          </div>
+        ) : data?.value?.length === 0 ? (
+          <div className="flex items-center justify-center flex-col mt-5  animate-dropdown">
+            <img
+              src="../public/nodata.jpg"
+              alt="No data"
+              className="w-[500px] rounded-lg "
+            />
+            <p className="text-center mt-5">
+              Opps! You have no movies you should make a search
+            </p>
+          </div>
+        ) : (
+          <div className="flex flex-wrap gap-2">
+            {data?.value?.map((film: MovieDataT) => (
+              <Card
+                onClick={() => navigate(`detail/${film?.id}`)}
+                title={film?.title}
+                imageSrc={film?.poster}
+                key={film?.id}
+                className="cursor-pointer"
+              ></Card>
+            ))}
+          </div>
+        )}
       </Section>
     </>
   );

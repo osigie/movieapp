@@ -8,12 +8,14 @@ import { toast } from "react-toastify";
 
 export const Search = () => {
   const [params] = useSearchParams();
-  const { data, isLoading, isError } = useGetSearchMovie(params.get("q") as string);
+  const { data, isLoading, isError } = useGetSearchMovie(
+    params.get("q") as string
+  );
   const navigate = useNavigate();
 
   if (isError) {
     toast("Error fetching movie");
-    return
+    return;
   }
 
   return (
@@ -26,7 +28,7 @@ export const Search = () => {
       {/* PAGE TITLE */}
       <Section
         className="-mt-[90px] flex items-center relative z-10"
-        title={params.get("q") || ""}
+        title={`Search results for ${params.get("q")}`}
       ></Section>
       {/* Films */}
       <Section>
