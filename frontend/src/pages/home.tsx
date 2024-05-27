@@ -31,9 +31,20 @@ export const Home = () => {
       <Section title="Your Movie Search" className="animate-dropleft">
         {isLoading ? (
           <div className="flex flex-wrap gap-2">
-            {Array.of(1, 2, 3, 4).map((i) => {
+            {Array.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).map((i) => {
               return <CardLoader key={i} />;
             })}
+          </div>
+        ) : movieData.length === 0 ? (
+          <div className="flex items-center justify-center flex-col mt-5  animate-dropdown">
+            <img
+              src="../public/nodata.jpg"
+              alt="No data"
+              className="w-[500px] rounded-lg "
+            />
+            <p className="text-center mt-5">
+              Opps! You have no movies you should make a search
+            </p>
           </div>
         ) : (
           <div id="scroll-div" className="overflow-auto">

@@ -23,12 +23,12 @@
     &lt;TestId&gt;xUnit::C11FD658-8341-8063-55AC-2D51F8F2EECA::net8.0::Movie.Api.Tests.MoviesControllerTests.GetMovie_ReturnsCreatedAtAction_WhenMovieFound&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=83880379_002D907f_002D44e4_002Db963_002Dafa1be45e4fd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetMovie_ReturnsCreatedAtAction_WhenMovieFound #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=83880379_002D907f_002D44e4_002Db963_002Dafa1be45e4fd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetMovie_ReturnsCreatedAtAction_WhenMovieFound #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::C11FD658-8341-8063-55AC-2D51F8F2EECA::net8.0::Movie.Api.Tests.MoviesControllerTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b824cf7e_002Dc9f6_002D4221_002D9c1a_002D90c8ec7ec273/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetRecentSearches_ReturnsOk_WithRecentSearches #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b824cf7e_002Dc9f6_002D4221_002D9c1a_002D90c8ec7ec273/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetRecentSearches_ReturnsOk_WithRecentSearches #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::C11FD658-8341-8063-55AC-2D51F8F2EECA::net8.0::Movie.Api.Tests.MoviesControllerTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;

@@ -43,9 +43,20 @@ namespace movie_app_api.Services
             var movie = JsonConvert.DeserializeObject<Movie>(content);
 
           
-  if (movie == null) {
+        if (movie == null) {
         return null;
- }
+           }
+        
+        // Check if movie already exists in the database by IMDb ID
+        var existingMovie = await _context.Movie
+            .Include(m => m.Ratings)
+            .FirstOrDefaultAsync(m => m.ImdbID == movie.ImdbID);
+
+        if (existingMovie != null)
+        {
+            return existingMovie;
+        }
+
  movie.Ratings ??= [];
 
             var newMovie = new Movie(movie);
@@ -94,11 +105,7 @@ namespace movie_app_api.Services
 
         public async Task<PaginatedResult<Movie>> GetMovies(int pageNumber, int pageSize)
         {
-            // return await _context.Movie
-            //     .Include( m => m.Ratings)
-            // .OrderByDescending(s => s.Timestamp)
-            // .Take(5)
-            // .ToListAsync(); ;
+    
             
             
             var totalCount = await _context.Movie.CountAsync();
